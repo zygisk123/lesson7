@@ -91,8 +91,12 @@ console.log("1 uzdavinys");
 console.log(raiseDegree(5,3));
 function raiseDegree(num, degree) {
     let num2 = num;
-    for (let i = 1; i < degree; i++) {
-        num*=num2;
+    if (degree == 0) {
+        num = 1;
+    }else{ 
+        for (let i = 1; i < degree; i++) {
+            num*=num2;
+        }
     }
     return num;
 }
@@ -390,6 +394,19 @@ function findMin(array) {
 
 //----------------------------------------------
 console.log("11 uzdavinys");
+let number = document.getElementById("number").innerText;
+
+let numberA = 0;
+
+
+for (let i = 0; i < 100; i++) {
+    for (let a = 2; a < 100; a++) {
+        if (raiseDegree(i,a) == number) {
+            console.log("Turejome skaiciu " + i + " pakelta " + a +  " laipsniu" );
+        }
+    }
+}
+
 //----------------------------------------------
 console.log("12 uzdavinys");
 //----------------------------------------------
