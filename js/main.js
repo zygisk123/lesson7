@@ -370,7 +370,7 @@ function findOddNumAverage(array) {
     }
     return oddNumSum / oddNum;
 }
-// randa min reiksme visa masyve ir prideda tris grazina. Grazina array su pakeista min reiksme
+// randa min reiksme visame masyve ir prideda tris Grazina array su pakeista min reiksme
 function findMin(array) {
     let minValue = 100;
     let min_i = 0;
