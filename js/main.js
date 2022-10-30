@@ -184,15 +184,11 @@ console.log("5 uzdavinys");
 let newArray = createArray(33,77,100);
 console.log(newArray);
 
-// let daliklArray = [];
-// for (let i = 0; i < newArray.length; i++) {
-//     daliklArray[i] = findNum(newArray[i]);
-// }
 const num=[13,17,14,19,16];
 let temp;
 for(let i=0;i<newArray.length;i++){
     for(let j=i+1;j<newArray.length;j++){
-        if(findNum(newArray[i])>=findNum(newArray[j])){
+        if(findNum(newArray[i])<=findNum(newArray[j])){
             temp=newArray[i]
             newArray[i]=newArray[j]
             newArray[j]=temp
@@ -200,6 +196,7 @@ for(let i=0;i<newArray.length;i++){
     }
 }
 console.log(newArray);
+
 //----------------------------------------------
 console.log("6 uzdavinys");
 let array = [];
@@ -239,6 +236,101 @@ function findOddNum(numberArray) {
 }
 //----------------------------------------------
 console.log("7 uzdavinys");
+
+// createNewArr();
+
+// function createNewArr() {
+//     let array = [];
+//     let minLength = 10;
+//     let maxLength = 20;
+//     let repeatMin = 10;
+//     let repeatMax = 30;
+//     let lastArrlastElement = 0;
+//     let randomLength = Math.round(Math.random() *(maxLength - minLength) + minLength);
+//     for (let i = 0; i < randomLength; i++) {
+//         if (i < randomLength - 1) {
+//             let randomNum = Math.round(Math.random() * 10);
+//             array[i] = randomNum;
+//         }else{
+//             array[i] = [];
+
+//         }
+//     }
+
+//     console.log(array);
+// }
+
+// psskutinis array
+function createlastArr() {
+    let lastArray = [];
+    let minLength = 10;
+    let maxLength = 20;
+    let lastArrlastElement = 0;
+    let randomLength = Math.round(Math.random() *(maxLength - minLength) + minLength);
+    for (let i = 0; i < randomLength; i++) {
+        if (i < randomLength - 1) {
+            let randomNum = Math.round(Math.random() * 10);
+            lastArray[i] = randomNum;
+        }else{
+            lastArray[i] = lastArrlastElement;
+
+        }
+    }
+    return lastArray;
+   // console.log(lastArray);
+}
+createNewArr();
+function createNewArr(){
+    let array = [];
+    let minLength = 10;
+    let maxLength = 20;
+    let randomLength = Math.round(Math.random() *(maxLength - minLength) + minLength);
+    for (let i = 0; i < randomLength; i++) {
+        if (i < randomLength - 1) {
+            let randomNum = Math.round(Math.random() * 10);
+            array[i] = randomNum;
+        }else{
+            array[i] = createlastArr();
+
+        }
+    }
+    return array;
+}
+
+// function createArray(length) {
+//     let array = [];
+//     let minLength = 10;
+//     let maxLength = 20;
+//     for (let i = 0; i < length; i++) {
+//         let randomNum = Math.round(Math.random() * 10);
+//         array[i] = randomNum;
+//         if (i == length-1) {
+//             let randomLength = Math.round(Math.random() *(maxLength - minLength) + minLength);
+//             createArray(randomLength);
+//         }
+//     }
+//     return array;
+// }
+
+// console.log(createArray(10));
+
+// function createAllArays() {
+//     let array = [];
+//     let minLength = 10;
+//     let maxLength = 20;
+//     let repeatMin = 10;
+//     let repeatMax = 30;
+//     let randomRepeat = Math.round(Math.random() *(repeatMax - repeatMin) + repeatMin);
+//     // let currentRepeatNum = 0;
+//     // for (let i = 0; currentRepeatNum < randomRepeat; i++) {
+//     //     let randomLength = Math.round(Math.random() *(maxLength - minLength) + minLength);
+//     //     createArray(randomLength);
+//     //     currentRepeatNum++;
+//     // }
+// }
+
+
+
 //----------------------------------------------
 console.log("8 uzdavinys");
 //----------------------------------------------
