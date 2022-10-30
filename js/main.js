@@ -237,30 +237,11 @@ function findOddNum(numberArray) {
 //----------------------------------------------
 console.log("7 uzdavinys");
 
-// createNewArr();
+let fullArr = fullArray();
+console.log(fullArr);
 
-// function createNewArr() {
-//     let array = [];
-//     let minLength = 10;
-//     let maxLength = 20;
-//     let repeatMin = 10;
-//     let repeatMax = 30;
-//     let lastArrlastElement = 0;
-//     let randomLength = Math.round(Math.random() *(maxLength - minLength) + minLength);
-//     for (let i = 0; i < randomLength; i++) {
-//         if (i < randomLength - 1) {
-//             let randomNum = Math.round(Math.random() * 10);
-//             array[i] = randomNum;
-//         }else{
-//             array[i] = [];
 
-//         }
-//     }
-
-//     console.log(array);
-// }
-
-// psskutinis array
+// paskutinis array
 function createlastArr() {
     let lastArray = [];
     let minLength = 10;
@@ -279,8 +260,8 @@ function createlastArr() {
     return lastArray;
    // console.log(lastArray);
 }
-createNewArr();
-function createNewArr(){
+
+function createNewArr(lastElement){
     let array = [];
     let minLength = 10;
     let maxLength = 20;
@@ -290,53 +271,123 @@ function createNewArr(){
             let randomNum = Math.round(Math.random() * 10);
             array[i] = randomNum;
         }else{
-            array[i] = createlastArr();
-
+            array[i] = lastElement;
         }
     }
     return array;
 }
 
-// function createArray(length) {
-//     let array = [];
-//     let minLength = 10;
-//     let maxLength = 20;
-//     for (let i = 0; i < length; i++) {
-//         let randomNum = Math.round(Math.random() * 10);
-//         array[i] = randomNum;
-//         if (i == length-1) {
-//             let randomLength = Math.round(Math.random() *(maxLength - minLength) + minLength);
-//             createArray(randomLength);
-//         }
-//     }
-//     return array;
-// }
-
-// console.log(createArray(10));
-
-// function createAllArays() {
-//     let array = [];
-//     let minLength = 10;
-//     let maxLength = 20;
-//     let repeatMin = 10;
-//     let repeatMax = 30;
-//     let randomRepeat = Math.round(Math.random() *(repeatMax - repeatMin) + repeatMin);
-//     // let currentRepeatNum = 0;
-//     // for (let i = 0; currentRepeatNum < randomRepeat; i++) {
-//     //     let randomLength = Math.round(Math.random() *(maxLength - minLength) + minLength);
-//     //     createArray(randomLength);
-//     //     currentRepeatNum++;
-//     // }
-// }
-
-
-
+function fullArray() {
+    let array = [];
+    let minRepeat = 10;
+    let maxRepeat = 30;
+    let randomRepeat = Math.round(Math.random()*(maxRepeat-minRepeat)+minRepeat);
+    for (let i = 0; i < randomRepeat; i++) {
+        let lastArray = createlastArr();
+        if (i == 0) {
+           array = createNewArr(lastArray);
+        }else{
+            array = createNewArr(array);
+        }
+    }
+    console.log("Random REPEAT: " + randomRepeat);
+    return array
+}
 //----------------------------------------------
 console.log("8 uzdavinys");
+// console.log(array[array.length-1].length);
+console.log("Visu elementu, kurie nera masyvai suma: " + findElementSum(fullArr));
+
+function findElementSum(array){
+    let currentArray = array;
+    let elementSum = 0
+    while (true) {
+        for (let i = 0; i < currentArray.length; i++) {
+            if (i < currentArray.length - 1) {
+                elementSum += currentArray[i];
+            }else{
+                currentArray = currentArray[i];
+            }
+        }
+        if (currentArray == 0) {
+            break;
+        }
+    }
+    return elementSum
+}
 //----------------------------------------------
 console.log("9 uzdavinys");
+
+oddNum();
+
+function oddNum() {
+    let newArray2 = createArray(1,33,3);
+    while (true) {
+        let evenNumExist = false;
+        for (let i = newArray2.length - 1; i >= newArray2.length - 3; i--) {
+            if (newArray2[i] % 2 == 0) {
+                evenNumExist = true;
+            }
+        } 
+
+        if (!evenNumExist) {
+            console.log("DONE");
+            console.log(newArray2);
+            break;
+        }else{
+            newArray2.push(Math.round(Math.random()*(33-1)+1))
+        }
+    }
+    
+}
 //----------------------------------------------
 console.log("10 uzdavinys");
+let array2 = [];
+let array2Length = 10
+for (let i = 0; i < array2Length; i++) {
+    array2[i] = createArray(1,100,10);
+}
+
+while (true) {
+    let oddNumAvr = findOddNumAverage(array2).toFixed(2);
+    if (oddNumAvr > 70) {
+        console.log("Pirminiu skaiciu vidurkis: " + oddNumAvr);
+        break;
+    }
+    array2 = findMin(array2);
+}
+
+function findOddNumAverage(array) {
+    let oddNumSum = 0;
+    let oddNum = 0;
+    for (let i = 0; i < array.length; i++) {
+        for (let a = 0; a < array[i].length; a++) {
+            if (array[i][a] % 2 > 0) {
+                oddNumSum += array[i][a];
+                oddNum++;
+            }
+        }        
+    }
+    return oddNumSum / oddNum;
+}
+// randa min reiksme visa masyve ir prideda tris grazina. Grazina array su pakeista min reiksme
+function findMin(array) {
+    let minValue = 100;
+    let min_i = 0;
+    let min_a = 0;
+    for (let i = 0; i < array.length; i++) {
+        for (let a = 0; a < array[i].length; a++) {
+            if (array[i][a] < minValue) {
+                minValue = array[i][a];
+                min_i = i;
+                min_a = a;
+            }
+        }        
+    }
+    array[min_i][min_a] += 3;
+    return array;
+}
+
 //----------------------------------------------
 console.log("11 uzdavinys");
 //----------------------------------------------
